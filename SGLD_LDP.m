@@ -1,21 +1,21 @@
-function [phis] = SGLD_LDP(phi, P_yx, rho0, M, S, a)
+function [phis] = SGLD_LDP(phi, P_yx, rho0, M, nS, a)
 
-% [phis] = SGLD_LDP(phi, P_yx, rho0, M, S, a)
+% [phis] = SGLD_LDP(phi, P_yx, rho0, M, nS, a)
 % 
 % This function implements the Stochastic Gradient Langevin Dynamics moves 
 % to sample thetas given P_yx.
 % phi: surrogate variable for theta
 % P_yx: collection of likelihood vectors, P(y|x)
 % rho0: prior hyperparameter vector for Gamma distribution
-% M: number of MCMC runs
-% S: subsample size
+% M: number of MCMC updates
+% nS: subsample size
 % a: step length for gradient update
 % 
 % phis contains M (surrogate) parameter vectors (columns) of size K.
 
 [K, T] = size(P_yx);
 phis = zeros(K, M);
-sub_size = min(T, S);
+sub_size = min(T, nS);
 
 for m = 1:M
     sub_ind = randi([1, T], 1, sub_size);
