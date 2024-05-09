@@ -1,7 +1,7 @@
 function [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff, rho0, M, alpha, loss_type, S, a)
 
-% [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, 
-% eps_DP, eps1_coeff, rho0, M, alpha, loss_type, S, a)
+% [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff, 
+% rho0, M, alpha, loss_type, S, a)
 %
 % This function implements the main algorithm for adaptive, non-adaptive,
 % and semi-adaptive approaches.
