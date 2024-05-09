@@ -79,7 +79,7 @@ for t = 1:T
     P_yx(:, t) = make_p_yx_vec(Y(t), K, star_set, k_best, eps1, eps2_vec(k_best)); 
 
     M_current = (t < T)*M + (t == T)*M_final;
-    [phis] = SGLD_DP(phi_samp, P_yx(:, 1:t), rho0, M_current, S, a);
+    [phis] = SGLD_LDP(phi_samp, P_yx(:, 1:t), rho0, M_current, S, a);
     phi_samp = phis(:, end);
     theta_samp = phi_samp/sum(phi_samp);
     
