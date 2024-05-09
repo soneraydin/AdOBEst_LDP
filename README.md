@@ -1,9 +1,9 @@
-This repository contains the codes for reproducing the numerical results in "Adaptive Online Bayesian Estimation of Frequency Distributions
-with Local Differential Privacy" paper.
+This repository contains the codes for reproducing the numerical results in the paper entitled
+"Adaptive Online Bayesian Estimation of Frequency Distributions with Local Differential Privacy", Soner Aydın, Sinan Yıldırım
 
-The main file is "experiments_for_SGDL.m" by which one can run the experiments and obtain the accuracy results (in terms of total variation distance) and the numbers k (average cardinality of the subsets chosen by each algorithm). 
+The main file is "experiments_for_SGDL.m" by which one can run the experiments and obtain the accuracy results (in terms of total variation distance) and the numbers $k$ (average cardinality of the subsets chosen by each algorithm). 
 
-We advise the user to set the values for K $\in {10, 20}$ and eps1_coeff $\in {0.8, 0.9}$ manually, since these values were used in the paper.
+We advise the user to set the values for $K \in \{10, 20\}$ and eps1_coeff $\in \{0.8, 0.9\}$ manually, since these values were used in the paper.
 
 After obtaining these results, one can also run the file "plot_results.m" to visualize them as barplots and heatmaps.
 
