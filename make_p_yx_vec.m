@@ -21,7 +21,7 @@ p22 = exp_eps_2/(exp_eps_2 + K - k0 - 1);
 cond = sum(y == S) > 0;
 if cond == 0
     g = p11*p21*ones(1, K);
-    g(star_set) = p12*(1/(K - k0));
+    g(S) = p12*(1/(K - k0));
     g(y) = p11*p22;
 else
     g = p12*ones(1, K);
