@@ -5,7 +5,7 @@ function G = make_G(K, k0, eps1, eps2)
 % This function outputs the G matrix whose elements are:
 % G(i, j) = p(y = i | x = j).
 % K: number of categories
-% k0: cardinality of the star set
+% k0: cardinality of the S
 % eps1: first DP parameter
 % eps2: second DP parameter
 
