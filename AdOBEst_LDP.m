@@ -59,7 +59,7 @@ for t = 1:T
     % Get x
     x = X(t);
     
-    % A: Construct star set
+    % A: Construct subset S
     [theta_ord, ord_ind] = sort(theta_samp, 'descend');
     ord_ind_inv(ord_ind) = 1:K;
 
@@ -72,7 +72,7 @@ for t = 1:T
         end
         [~, k_best] = max(L);
     end
-    star_set = ord_ind(1:k_best);
+    S = ord_ind(1:k_best);
     k_selected(t) = k_best;
     
     % B: Sample y
@@ -82,7 +82,7 @@ for t = 1:T
 
     % C. Sample theta
     % The likelihood vector
-    P_yx(:, t) = make_p_yx_vec(Y(t), K, star_set, k_best, eps1, eps2_vec(k_best)); 
+    P_yx(:, t) = make_p_yx_vec(Y(t), K, S, k_best, eps1, eps2_vec(k_best)); 
 
     M_current = (t < T)*M + (t == T)*M_final;
     [phis] = SGLD_LDP(phi_samp, P_yx(:, 1:t), rho0, M_current, nS, a);
