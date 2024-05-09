@@ -1,7 +1,7 @@
-function [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff, rho0, M, alpha, loss_type, S, a)
+function [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff, rho0, M, alpha, loss_type, nS, a)
 
 % [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff, 
-% rho0, M, alpha, loss_type, S, a)
+% rho0, M, alpha, loss_type, nS, a)
 %
 % This function implements the main algorithm for adaptive, non-adaptive,
 % and semi-adaptive approaches.
@@ -10,11 +10,11 @@ function [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff,
 % eps1_coeff: coefficient that relates eps1 to eps_DP 
 % (eps1 = eps1_coeff*eps_DP)
 % rho0: prior hyperparameter vector for Gamma distribution
-% M: number of MCMC runs
+% M: number of SGLD updates per time step
 % alpha: parameter for the semi-adaptive approach
 % loss_type: a value between 1 and 6 to choose one of loss functions below:
 % 1:FIM, 2:Entropy, 3:TV1, 4:TV2, 5:Expected MSE, 6. Prob(Y = x)
-% S: subsample size
+% nS: subsample size
 % a: step length for gradient update
 % 
 % Outputs:
@@ -85,7 +85,7 @@ for t = 1:T
     P_yx(:, t) = make_p_yx_vec(Y(t), K, star_set, k_best, eps1, eps2_vec(k_best)); 
 
     M_current = (t < T)*M + (t == T)*M_final;
-    [phis] = SGLD_LDP(phi_samp, P_yx(:, 1:t), rho0, M_current, S, a);
+    [phis] = SGLD_LDP(phi_samp, P_yx(:, 1:t), rho0, M_current, nS, a);
     phi_samp = phis(:, end);
     theta_samp = phi_samp/sum(phi_samp);
     
