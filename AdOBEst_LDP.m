@@ -16,6 +16,12 @@ function [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff,
 % 1:FIM, 2:Entropy, 3:TV1, 4:TV2, 5:Expected MSE, 6. Prob(Y = x)
 % S: subsample size
 % a: step length for gradient update
+% 
+% Outputs:
+% theta_est: the Monte Carlo approximation of the posterior expectation of theta
+% thetas: the posterior samples (at the final time step) for theta
+% Y: (1 x T) vector generated observations
+% k_selected: a (1 x T) vector of cardinalities of selected subsets
 
 
 T = length(X);
