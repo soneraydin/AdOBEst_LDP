@@ -10,7 +10,8 @@ function [phis] = SGLD_LDP(phi, P_yx, rho0, M, S, a)
 % M: number of MCMC runs
 % S: subsample size
 % a: step length for gradient update
-
+% 
+% phis contains M (surrogate) parameter vectors (columns) of size K.
 
 [K, T] = size(P_yx);
 phis = zeros(K, M);
