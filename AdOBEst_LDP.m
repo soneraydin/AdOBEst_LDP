@@ -63,7 +63,7 @@ for t = 1:T
     [theta_ord, ord_ind] = sort(theta_samp, 'descend');
     ord_ind_inv(ord_ind) = 1:K;
 
-    if loss_type == 0 % semi-adaptive version (if alpha = 0, it implements the non-adaptive version)
+    if loss_type == 0 % semi-adaptive version (if alpha = 1, it implements the non-adaptive version)
         k_best = min(K, sum((cumsum(theta_ord)) < alpha) + 1); % for precision reasons
     else
         L = zeros(1, K);
