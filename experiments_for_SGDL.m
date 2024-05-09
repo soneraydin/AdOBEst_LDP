@@ -58,7 +58,7 @@ for mc = 1:MC_run
                     loss_type = loss_type_vec(i4);
                     alpha = alpha_vec(i4);
                     fprintf('Monte Carlo run no %d for \n epsilon = %.2f, rho = %.2f, K=%d, method=%d... \n', mc, eps_DP, rho_coeff, K, loss_type);
-                    [theta_est, thetas, Y, k_selected] = adaptive_density_est_DP_SGLD(X, eps_DP, eps1_coeff, rho0, M, alpha, loss_type, S, a);
+                    [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff, rho0, M, alpha, loss_type, S, a);
                     TV_current = 0.5*sum(abs(theta_est' - theta_true));
                     TV{i1, i2}(i3, i4, mc) = TV_current;
                     K_selected{i1, i2}(i3, i4, mc) = mean(k_selected);
