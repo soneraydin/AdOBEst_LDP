@@ -17,13 +17,13 @@ alpha_vec = [1 0.95 0.9 0.8 0.6 0.2 0 0 0 0 0 0];
 
 K_vec = 20; L_K = length(K_vec); % Number of categories
 
-M = 20; % Number of MCMC runs
+M = 20; % Number of SGLD updates per time step
 
 % Dirichlet parameters
 rho_coeff_vec = [0.01 0.1 1]; L_r = length(rho_coeff_vec); 
 MC_run = 50; % Number of Monte Carlo runs
 
-S = 50; % Number of SGLD steps 
+nS = 50; % SGLD subset size
 
 % Initialization of cells for TV results 
 % and cardinalities of the selected subsets
@@ -58,7 +58,7 @@ for mc = 1:MC_run
                     loss_type = loss_type_vec(i4);
                     alpha = alpha_vec(i4);
                     fprintf('Monte Carlo run no %d for \n epsilon = %.2f, rho = %.2f, K=%d, method=%d... \n', mc, eps_DP, rho_coeff, K, loss_type);
-                    [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff, rho0, M, alpha, loss_type, S, a);
+                    [theta_est, thetas, Y, k_selected] = AdOBEst_LDP(X, eps_DP, eps1_coeff, rho0, M, alpha, loss_type, nS, a);
                     TV_current = 0.5*sum(abs(theta_est' - theta_true));
                     TV{i1, i2}(i3, i4, mc) = TV_current;
                     K_selected{i1, i2}(i3, i4, mc) = mean(k_selected);
