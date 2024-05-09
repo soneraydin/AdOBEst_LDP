@@ -1,12 +1,12 @@
-function g = make_p_yx_vec(y, K, star_set, k0, eps1, eps2)
+function g = make_p_yx_vec(y, K, S, k0, eps1, eps2)
 
-% g = make_p_yx_vec(y, K, star_set, k0, eps1, eps2)
+% g = make_p_yx_vec(y, K, S, k0, eps1, eps2)
 % 
 % This function creates the likelihood vectors, P(y|x).
 % y: privatized observations
 % K: number of categories
-% star_set: optimal subset for the current iteration
-% k0: cardinality of the star set
+% S: subset of indices
+% k0: cardinality of S
 % eps1: first DP parameter
 % eps2: second DP parameter
 
@@ -18,7 +18,7 @@ p12 = 1/(exp_eps_1 + min(k0, K-1));
 p21 = 1/(exp_eps_2 + K - k0 - 1);
 p22 = exp_eps_2/(exp_eps_2 + K - k0 - 1);
 
-cond = sum(y == star_set) > 0;
+cond = sum(y == S) > 0;
 if cond == 0
     g = p11*p21*ones(1, K);
     g(star_set) = p12*(1/(K - k0));
