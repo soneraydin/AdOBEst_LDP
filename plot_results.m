@@ -13,7 +13,7 @@ load(datanametoload);
 % Color settings for each approach
 color_mtx = [repmat((0:0.1:0.5)', 1, 3);[[0, 1, 0.5]; [0, 0, 1]; [1, 0, 0]; [1, 0.5, 0]; [0, 0, 0.6]; [0, 0.5, 1]]];
 
-for i1 = 1:L_K % 1:L_K
+for i1 = 1:L_K
     K = K_vec(i1);
     for i2 = 1:L_r
         rho_coeff = rho_coeff_vec(i2);
@@ -32,7 +32,7 @@ for i1 = 1:L_K % 1:L_K
         h = findobj(gca,'Tag','Box');
 
         xlabel('$\epsilon$', 'Interpreter', 'Latex');
-        set(gca, 'ylim', [0, 0.6], 'xlim', [0.5, 3.5]);
+        set(gca, 'ylim', [0, 1], 'xlim', [0.5, 3.5]);
         title(sprintf('$K =$ %d, $\\rho$ = %.2f', K, rho_coeff), 'Interpreter', 'Latex');
         grid on;
         exportgraphics(gca, [datanametoload sprintf('rhocoeff_%03d', 100*rho_coeff), '.pdf']);
