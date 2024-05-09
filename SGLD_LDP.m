@@ -1,6 +1,6 @@
-function [phis] = SGLD_DP(phi, P_yx, rho0, M, S, a)
+function [phis] = SGLD_LDP(phi, P_yx, rho0, M, S, a)
 
-% [phis] = SGLD_DP(phi, P_yx, rho0, M, S, a)
+% [phis] = SGLD_LDP(phi, P_yx, rho0, M, S, a)
 % 
 % This function implements the Stochastic Gradient Langevin Dynamics moves 
 % to sample thetas given P_yx.
