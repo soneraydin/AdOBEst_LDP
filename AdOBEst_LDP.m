@@ -62,9 +62,9 @@ for t = 1:T
     else
         L = zeros(1, K);
         for k = 1:K
-            L(k) = calculate_est_error(theta_ord, GG{k}, loss_type);
+            L(k) = calculate_utility(theta_ord, GG{k}, loss_type);
         end
-        [~, k_best] = min(L);
+        [~, k_best] = max(L);
     end
     star_set = ord_ind(1:k_best);
     k_selected(t) = k_best;
