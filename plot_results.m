@@ -28,7 +28,6 @@ for i1 = 1:L_K
         end
         hold off;
         set(gca, 'xtick', 1:3, 'xticklabel', eps_DP_vec);
-        set(findobj(gca,'type','line'),'linew',2);
         h = findobj(gca,'Tag','Box');
 
         xlabel('$\epsilon$', 'Interpreter', 'Latex');
